@@ -50,7 +50,7 @@ module Travis
         end
 
         def xml
-          sh.cmd "cat result.xml"
+          sh.cmd "cat $SMALLTALK_CI_HOME/result.xml"
         end
 
       end
