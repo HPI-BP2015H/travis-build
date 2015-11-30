@@ -46,4 +46,8 @@ describe Travis::Build::Script::Smalltalk, :sexp do
     end
   end
 
+  it 'ouputs xml file' do
+    should include_sexp [:cmd, "cat result.xml", echo: true, timing: true]
+  end
+
 end
