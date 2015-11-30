@@ -49,6 +49,10 @@ module Travis
           sh.cmd "$SMALLTALK_CI_HOME/run.sh"
         end
 
+        def xml
+          sh.cmd "cat result.xml"
+        end
+
       end
     end
   end

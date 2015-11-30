@@ -126,6 +126,14 @@ module Travis
           apply :disable_sudo
         end
 
+        def xml_fold
+          if self.respond_to?(:xml, true)
+            sh.fold "xml" do
+              self.xml
+            end
+          end
+        end
+
         def config_env_vars
           @config_env_vars ||= Build::Env::Config.new(data, config)
           Array(@config_env_vars.data[:env])
