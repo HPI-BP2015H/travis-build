@@ -14,7 +14,7 @@ form.
 
 Since the specs run the generated build script, we recommend running it in a
 virtual machine to contain the changes. There's a Vagrantfile in this
-repository, so you can use [Vagrant](http://www.vagrantup.com) for this:
+repository, so you can use [Vagrant](http://www.vagrantup.com) (requires a provider like [VirtualBox](http://virtualbox.org)) for this:
 
     vagrant up
     vagrant ssh
@@ -25,13 +25,14 @@ If you wish to just run the specs, you can just run `bundle exec rspec spec`.
 
 ## Use as addon for CLI
 
-You can set travis-build up as a plugin for the [command line client](https://github.com/travis-ci/travis.rb):
+If you have installed the Travis CI [command line client](https://github.com/travis-ci/travis.rb) you can set travis-build up as a plugin:
 
+    # ~/.travis is created at first CLI execution
     ln -s PATH_TO_TRAVIS_BUILD ~/.travis/travis-build
     gem install bundler
     bundle install --gemfile ~/.travis/travis-build/Gemfile
 
-This will add the `compile` command to travis CLI, which produces
+This will add the `compile` command to Travis CLI, which produces
 the bash script that runs the specified job, except that the secure environment
 variables are not defined, and that the build matrix expansion is not considered.
 
@@ -45,7 +46,7 @@ It is highly recommended that you run this on a virtual machine.
 
 ### Invocation
 
-The command can be invoked in 3 ways:
+In a cloned repository the command can be invoked in 3 ways:
 
 1. Without an argument, it produces the bash script for the local `.travis.yml` without considering `env` and `matrix` values
 (`travis-build` is unable to expand these keys correctly).
